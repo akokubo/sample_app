@@ -60,6 +60,11 @@ describe "StaticPages" do
 
   # Contactページに対するテスト
   describe "Contact Page" do
+    it "should have the content 'Contact'" do
+      visit '/static_pages/contact'
+      expect(page).to have_content('Contact')
+    end
+
     # タイトルに対するテスト
     it "should have the title 'Contact'" do
       visit '/static_pages/contact'
