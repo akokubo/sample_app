@@ -10,19 +10,19 @@ describe "StaticPages" do
 
     # それはSample Appという内容を持っている
     it "should have the content 'Sample App'" do
-      visit '/static_pages/home'
+      visit root_path
       expect(page).to have_content('Sample App')
     end
 
     # full_titleヘルパーによりベース・タイトルを表示しているかをテスト
     it "should have the base title" do
-      visit '/static_pages/home'
+      visit root_path
       expect(page).to have_title("Ruby on Rails Tutorial Sample App")
     end
 
     # full_titleヘルパーによりタイトルにサフィックスが含まれていないことをテスト
     it "should not have a custom page title" do
-      visit '/static_pages/home'
+      visit root_path
       expect(page).not_to have_title('| Home')
     end
   end
@@ -30,15 +30,15 @@ describe "StaticPages" do
   # Helpページに対するテスト
   describe "Help Page" do
 
-    # それはSample Appという内容を持っている
+    # それはHelpという内容を持っている
     it "should have the content 'Help'" do
-      visit '/static_pages/help'
+      visit help_path
       expect(page).to have_content('Help')
     end
 
     # タイトルに対するテスト
     it "should have the title 'Help'" do
-      visit '/static_pages/help'
+      visit help_path
       expect(page).to have_title("#{base_title} | Help")
     end
   end
@@ -47,27 +47,28 @@ describe "StaticPages" do
   describe "About Page" do
     # それはAbout Usという内容を持っている
     it "should have the content 'About Us'" do
-      visit '/static_pages/about'
+      visit about_path
       expect(page).to have_content('About Us')
     end
 
     # タイトルに対するテスト
     it "should have the title 'About Us'" do
-      visit '/static_pages/about'
+      visit about_path
       expect(page).to have_title("#{base_title} | About Us")
     end
   end
 
   # Contactページに対するテスト
   describe "Contact Page" do
+    # それはContactという内容を持っている
     it "should have the content 'Contact'" do
-      visit '/static_pages/contact'
+      visit contact_path
       expect(page).to have_content('Contact')
     end
 
     # タイトルに対するテスト
     it "should have the title 'Contact'" do
-      visit '/static_pages/contact'
+      visit contact_path
       expect(page).to have_title("#{base_title} | Contact")
     end
   end
