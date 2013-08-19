@@ -97,6 +97,18 @@ describe "AuthenticationPages" do
         before { visit users_path }
         it { should have_title('Sign in')}
       end
+
+      describe "as non-admin user" do
+        let(:user) { FactoryGirl.create(:user) }
+        let(:non_admin) { FactoryGirl.create(:user) }
+
+        before { sign_in non_admin, no_capybara: true}
+
+        describe "submitting a DELETE request to the User#destroy action" do
+          before { delete user_path(user) }
+          specify { expect(response).to redirect_to(root_path) }
+        end
+      end
     end
   end
 end
